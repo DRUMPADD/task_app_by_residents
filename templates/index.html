@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Aplicación de notas</h1>
+        <form method="post">
+            {% csrf_token %}
+            <h2>
+                <span>Agregar nota</span>
+                <span class="material-symbols-outlined">
+                heart_plus
+                </span>
+            </h2>
+            <div class="caja-input">
+                <input type="text" class="input" name="titulo" placeholder="Título...">
+            </div>
+            <div class="caja-input">
+                <input type="text" class="input" name="descrip" placeholder="Descripción...">
+            </div>
+            <input type="submit" class="boton" value="Crear nota">
+            
+        </form>
+
+        <div class="lista">
+            {% for task in tasks %}
+                <div class="nota">
+                    <div>
+                        <p>{{ task.task_name }}</p>
+                        <p>{{ task.task_desc }}</p>
+                    </div>
+                    <div class="btns">
+                        <button type="button">
+                            <span class="material-symbols-outlined">
+                            edit_square
+                            </span>
+                        </button>
+                        <button type="button" id-note="{{ task.pk }}">
+                            <span class="material-symbols-outlined">
+                            delete
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
