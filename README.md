@@ -1,7 +1,7 @@
 # Aplicación de práctica
 ## Task app - creada por residentes
 
-# Instalar dependencias 💻
+## Instalar dependencias 💻
 ~~~bash
     pip install -r requirements.txt
 ~~~
